@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Dia dos Namorados ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #ff6a88, #ff99ac);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 50px;
+    }
+
+    header, .music, .counter, .message, .sky, footer {
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .counter h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    #timer {
+      font-size: 1.5rem;
+      background: rgba(255,255,255,0.15);
+      padding: 10px 20px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .message p, .sky p {
+      font-size: 1.2rem;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
+
+    .sky img {
+      max-width: 90%;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    .slideshow-container {
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      margin: 30px 0;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 1s ease-in-out;
+      width: 300%;
+    }
+
+    .slides img {
+      width: 100vw;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: rgba(255,255,255,0.8);
+      animation: fall 10s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Feliz Dia dos Namorados, meu amor! 💖</h1>
+    <p>Uma pequena homenagem para a mulher da minha vida.</p>
+  </header>
+
+  <section class="counter">
+    <h2>Eu te amo há...</h2>
+    <div id="timer">Calculando...</div>
+  </section>
+
+  <section class="music">
+    <h2>Nossa música:</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/10Z9RbwrTbQ0gQeNRJ2dC1?utm_source=generator"
+      width="100%" height="152" frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </section>
+
+  <section class="slideshow-container">
+    <div class="slides" id="slides">
+      <img src="https://i.imgur.com/cW9EClO.jpg" alt="Foto 1">
+      <img src="https://i.imgur.com/0VpocxT.jpg" alt="Foto 2">
+      <img src="https://i.imgur.com/YkRo5EF.jpg" alt="Foto 3">
+    </div>
+  </section>
+
+  <section class="message">
+    <p>
+      Desde que te conheci, minha vida ganhou mais cor, mais amor e mais sentido. <br>
+      Obrigado por cada sorriso, cada abraço e cada momento ao seu lado. <br>
+      Eu te amo infinitamente. Feliz Dia dos Namorados! 💘
+    </p>
+  </section>
+
+  <section class="sky">
+    <h2>O Céu do Nosso Encontro ✨</h2>
+    <img src="https://i.imgur.com/nH0fNTr.jpeg" alt="Constelação de Câncer - 10/03/2017">
+    <p>
+      Na noite de 10 de março de 2017, enquanto nossos caminhos se cruzavam na UFRA, o céu de Belém era abençoado pela presença da constelação de <strong>Câncer</strong>.  
+      Uma constelação associada ao amor, ao cuidado e à conexão profunda — exatamente como o laço que começava a se formar entre nós. 🌌❤️
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Criado com amor por você ❤️
+  </footer>
+
+  <script>
+    const startDate = new Date("2017-03-10T20:00:00");
+    function updateTimer() {
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("timer").innerText =
+        `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    let slideIndex = 0;
+    const slides = document.getElementById("slides");
+    setInterval(() => {
+      slideIndex = (slideIndex + 1) % 3;
+      slides.style.transform = `translateX(-${slideIndex * 100}vw)`;
+    }, 3000);
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 10 + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
